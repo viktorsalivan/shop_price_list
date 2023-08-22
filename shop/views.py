@@ -58,10 +58,10 @@ def categories(request,category_id):
         # Фильтруем по диапазону цен
         products = products.filter(price__range=(min_price, max_price))
     elif min_price:
-        # Фильтруем по минимальной цене
+        # Фильтруем по минимальной цене ( Больше чем минимальная цена)
         products = products.filter(price__gte=min_price)
     elif max_price:
-        # Фильтруем по максимальной цене
+        # Фильтруем по максимальной цене (Меньше чем максимальная цена)
         products = products.filter(price__lte=max_price)
 
     category = models.Category.objects.all()
