@@ -24,5 +24,6 @@
 Необходимо добавить группу VIP, стоимость товара можно указать при добовление товара.
 
 ## Запуск 
+0. pip install -r requirements.txt
 1. python manage.py createsuperuser - Создаст администратора с нужными параметрами
 2. python manage.py runserver - запустить локальный сервер средствами Django
