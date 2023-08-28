@@ -25,5 +25,6 @@
 
 ## Запуск 
 0. pip install -r requirements.txt
-1. python manage.py createsuperuser - Создаст администратора с нужными параметрами
-2. python manage.py runserver - запустить локальный сервер средствами Django
+1. py manage.py makemigrations
+2. py manage.py migrate
+3. py manage.py createsuperuser
