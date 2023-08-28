@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'shop',
     'users',
-    'autoslug',
     'news',
 ]
 
