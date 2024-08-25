@@ -4,7 +4,7 @@ from shop.forms import OrderForm
 from shop import models
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import Group
-from django.db.models import Q
+from django.views.decorators.http import require_POST
 
 """""
 'base' Данная функция отображает все категории на странице.
@@ -23,10 +23,7 @@ def base(request):
 def all_products(request):
     search_query = request.GET.get('search', '')
     if search_query:
-        products = models.Products.objects.filter(
-        Q(title__icontains=search_query) | Q(description__icontains=search_query))
-        category = models.Category.objects.all()
-        contact = models.Concacts.objects.all()
+        products = models.Products.objects.filter(title__icontains = search_query, description__icontains = search_query)
     else:
         category = models.Category.objects.all()
         products = models.Products.objects.all()
@@ -58,10 +55,10 @@ def categories(request,category_id):
         # Фильтруем по диапазону цен
         products = products.filter(price__range=(min_price, max_price))
     elif min_price:
-        # Фильтруем по минимальной цене ( Больше чем минимальная цена)
+        # Фильтруем по минимальной цене
         products = products.filter(price__gte=min_price)
     elif max_price:
-        # Фильтруем по максимальной цене (Меньше чем максимальная цена)
+        # Фильтруем по максимальной цене
         products = products.filter(price__lte=max_price)
 
     category = models.Category.objects.all()
